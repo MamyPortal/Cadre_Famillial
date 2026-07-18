@@ -1,50 +1,53 @@
-const CACHE_NAME = 'cadre-familial-v3-1';
-const CORE_ASSETS = [
+const CACHE_NAME = 'cadre-familial-v4-cache-v1';
+const ASSETS = [
   './',
   './index.html',
-  './styles.css',
-  './app.js',
+  './settings.html',
+  './css/styles.css',
+  './css/settings.css',
+  './js/storage.js',
+  './js/weather.js',
+  './js/slideshow.js',
+  './js/app.js',
+  './js/settings.js',
+  './config.json',
   './manifest.json',
-  './icons/icon-192.png',
-  './icons/icon-512.png'
+  './photos/sample-1.svg',
+  './photos/sample-2.svg',
+  './photos/sample-3.svg',
+  './icons/icon-192.svg',
+  './icons/icon-512.svg'
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(CORE_ASSETS))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    await cache.addAll(ASSETS);
+    self.skipWaiting();
+  })());
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => Promise.all(
-      keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-    )).then(() => self.clients.claim())
-  );
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.map((key) => key !== CACHE_NAME ? caches.delete(key) : Promise.resolve()));
+    self.clients.claim();
+  })());
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-
-  const url = new URL(event.request.url);
-  const sameOrigin = url.origin === self.location.origin;
-  const shouldCache = sameOrigin && !url.href.includes('config.json?ts=');
-
-  if (!shouldCache) return;
-
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request).then((response) => {
-        if (response && response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        }
-        return response;
-      }).catch(() => cached);
-
-      return cached || network;
-    })
-  );
+  const req = event.request;
+  if (req.method !== 'GET') return;
+  event.respondWith((async () => {
+    const cached = await caches.match(req);
+    if (cached) return cached;
+    try {
+      const fresh = await fetch(req);
+      const cache = await caches.open(CACHE_NAME);
+      cache.put(req, fresh.clone()).catch(() => {});
+      return fresh;
+    } catch (err) {
+      return caches.match('./index.html');
+    }
+  })());
 });

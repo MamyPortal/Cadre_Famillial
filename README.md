@@ -1,26 +1,26 @@
-# Cadre familial V3
+# Cadre Familial V4
 
-Version pensée pour une tablette 11" en mode portrait et paysage.
+Interface de cadre photo familiale pensée pour une tablette 11" (Redmi Pad 2) et un usage en plein écran.
 
 ## Fichiers
-
-- `index.html`
-- `styles.css`
-- `app.js`
-- `config.json`
-- `manifest.json`
-- `sw.js`
-- `photos/`
-- `icons/`
+- `index.html` : écran principal
+- `settings.html` : page de paramètres
+- `css/styles.css` : styles de l'écran principal
+- `css/settings.css` : styles de la page paramètres
+- `js/app.js` : logique de l'écran principal
+- `js/settings.js` : logique des paramètres
+- `js/storage.js` : sauvegarde locale
+- `js/weather.js` : météo Open-Meteo
+- `js/slideshow.js` : diaporama
+- `manifest.json` / `sw.js` : PWA
+- `config.json` : configuration par défaut
 
 ## Utilisation
-
-1. Copiez le dossier sur un serveur web local ou un hébergement HTTPS.
-2. Ouvrez `index.html` dans Chrome.
-3. Modifiez `config.json` pour changer le message, la météo, les liens et les photos.
+1. Ouvrir `index.html` dans Chrome.
+2. Ouvrir `settings.html` pour personnaliser.
+3. Remplacer les photos dans `photos/` par vos propres fichiers.
 
 ## Remarques
-
-- Le service worker fonctionne uniquement en HTTP(S), pas en `file://`.
-- Les photos d'exemple sont des SVG de démonstration à remplacer par vos propres images.
-- Pour une tablette fixée au mur, le mode paysage est optimisé pour supprimer le défilement.
+- La météo utilise Open-Meteo.
+- Les réglages sont sauvegardés dans `localStorage`.
+- Le bouton `Plein écran` essaie de lancer le mode plein écran.

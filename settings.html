@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#09111f" />
+  <title>Paramètres — Cadre familial</title>
+  <link rel="stylesheet" href="css/settings.css" />
+</head>
+<body>
+  <main class="settings-shell">
+    <header class="settings-header card">
+      <div>
+        <p class="eyebrow">Configuration</p>
+        <h1>Paramètres</h1>
+        <p class="muted">Les réglages sont enregistrés localement sur la tablette.</p>
+      </div>
+      <a class="back-link" href="index.html">Retour au cadre</a>
+    </header>
+
+    <section class="card settings-card">
+      <form id="settingsForm" class="settings-form">
+        <label>
+          <span>Titre</span>
+          <input id="titleInput" type="text" placeholder="Bonjour Mamie" />
+        </label>
+
+        <label>
+          <span>Sous-titre</span>
+          <input id="subtitleInput" type="text" placeholder="Cadre familial" />
+        </label>
+
+        <label class="full">
+          <span>Message familial</span>
+          <textarea id="messageInput" rows="4"></textarea>
+        </label>
+
+        <label>
+          <span>Ville météo</span>
+          <input id="cityInput" type="text" placeholder="Paris" />
+        </label>
+
+        <label>
+          <span>Taux du diaporama (ms)</span>
+          <input id="intervalInput" type="number" min="3000" step="500" />
+        </label>
+
+        <label>
+          <span>Photo principale (%)</span>
+          <input id="photoScaleInput" type="range" min="50" max="85" step="1" />
+        </label>
+
+        <label>
+          <span>Couleur accent</span>
+          <input id="accentInput" type="color" />
+        </label>
+
+        <label>
+          <span>Thème</span>
+          <select id="themeModeInput">
+            <option value="dark">Sombre</option>
+            <option value="light">Clair</option>
+            <option value="system">Système</option>
+          </select>
+        </label>
+
+        <label class="toggle">
+          <input id="showWeatherInput" type="checkbox" />
+          <span>Afficher la météo</span>
+        </label>
+
+        <label class="toggle">
+          <input id="showTimeInput" type="checkbox" />
+          <span>Afficher l’heure</span>
+        </label>
+
+        <label class="toggle">
+          <input id="fullScreenInput" type="checkbox" />
+          <span>Proposer le plein écran au démarrage</span>
+        </label>
+
+        <label class="full">
+          <span>URL des photos (une par ligne)</span>
+          <textarea id="photosInput" rows="5" placeholder="photos/sample-1.svg"></textarea>
+        </label>
+
+        <label class="full">
+          <span>Liens famille (format: libellé | URL)</span>
+          <textarea id="linksInput" rows="4" placeholder="Photos | https://photos.google.com/"></textarea>
+        </label>
+
+        <div class="full buttons">
+          <button class="primary" type="submit">Enregistrer</button>
+          <button id="resetBtn" class="secondary" type="button">Réinitialiser</button>
+          <a class="secondary" href="index.html">Annuler</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>
