@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#09111f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Cadre familial interactif pour tablette" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Cadre familial</title>
+</head>
+<body>
+  <main class="shell" aria-label="Cadre familial">
+    <header class="hero card">
+      <div class="hero-copy">
+        <p id="subtitle" class="eyebrow">Cadre familial</p>
+        <h1 id="title">Bonjour</h1>
+        <p id="familyNotes" class="small muted">Chargement...</p>
+      </div>
+
+      <div class="hero-meta" aria-label="Informations du jour">
+        <div class="meta-group meta-datetime">
+          <div id="dateLine" class="date-line">--</div>
+          <div id="timeLine" class="time-line">--:--</div>
+        </div>
+
+        <div class="meta-group meta-weather">
+          <div id="weatherMain" class="weather-main">--</div>
+          <div id="weatherDetails" class="weather-details muted">Chargement...</div>
+        </div>
+
+        <div class="meta-group meta-status">
+          <span id="onlineLine" class="status-badge status-online">En ligne</span>
+          <span id="batteryLine" class="status-badge status-battery">Batterie --</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="card message-card" aria-label="Message familial">
+      <div class="panel-title">Message de la famille</div>
+      <div id="messageBox" class="message-box">--</div>
+    </section>
+
+    <section class="card photo-card" aria-label="Photos familiales">
+      <div class="photo-stage" id="photoStage" role="button" tabindex="0" aria-label="Photo suivante">
+        <img id="photoImg" alt="Photos de la famille" />
+        <div id="photoLabel" class="photo-label">--</div>
+      </div>
+    </section>
+
+    <section class="actions" aria-label="Actions rapides">
+      <a id="whatsappLink" class="cta" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <button id="refreshBtn" class="secondary" type="button">Rafraîchir</button>
+      <a id="photoLink" class="secondary" href="#" target="_blank" rel="noopener noreferrer">Photos</a>
+    </section>
+
+    <section class="card footer-card" aria-label="Liens de la famille">
+      <div class="panel-title">Liens de la famille</div>
+      <div id="linkList" class="link-list"></div>
+    </section>
+
+    <footer class="footer">Cadre familial • Redmi Pad 2 • plein écran conseillé</footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

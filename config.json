@@ -1,0 +1,30 @@
+{
+  "title": "Bonjour Mamie",
+  "subtitle": "Cadre familial simple",
+  "homeGreeting": "Bienvenue",
+  "city": "Paris",
+  "message": "Nous venons dimanche midi. Gros bisous de toute la famille.",
+  "ephemeride": "Saint du jour, anniversaire, rappel familial.",
+  "whatsappPhone": "33600000000",
+  "whatsappLabel": "Appeler WhatsApp",
+  "photoIntervalMs": 12000,
+  "photoUrls": [
+    "photos/sample-1.svg",
+    "photos/sample-2.svg",
+    "photos/sample-3.svg"
+  ],
+  "links": [
+    {
+      "label": "Photos",
+      "url": "https://photos.google.com/"
+    }
+  ],
+  "theme": {
+    "accent": "#4f8cff"
+  },
+  "familyNotes": [
+    "Garder la tablette branchée.",
+    "Le bouton WhatsApp ouvre l'application.",
+    "Les proches modifient config.json à distance."
+  ]
+}
